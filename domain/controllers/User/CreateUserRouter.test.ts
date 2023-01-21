@@ -4,25 +4,7 @@ import { InMemoryRepository } from '../../../main/repositories/User/InMemoryRepo
 import { CreateUserRouter } from './CreateUserRouter'
 
 describe('Create User Controller', () => {
-  test('Should 200 with create user', async () => {
-    const userRepository = new InMemoryRepository()
-    const useCase = new CreateUser(userRepository)
-    const sut = new CreateUserRouter(useCase)
-
-    const clientRequest = {
-      body: {
-        name: 'Gabriel',
-        email: 'dev@andreazza.dev',
-        password: '123456',
-        confirm_password: '123456',
-      },
-    }
-    const retornoApp = await sut.call(clientRequest)
-    expect(retornoApp.statusCode).toEqual(200)
-    // expect(sut.data).toEqual({ myProp: 'anyProp' })
-  })
-
-  test('Should 400 if empty email', async () => {
+  test('Espero receber 400 se o campo email estiver vazio', async () => {
     const userRepository = new InMemoryRepository()
     const useCase = new CreateUser(userRepository)
     const sut = new CreateUserRouter(useCase)
@@ -50,7 +32,7 @@ describe('Create User Controller', () => {
     expect(retornoApp.statusCode).toEqual(400)
   })
 
-  test('Should 400 if empty password', async () => {
+  test('Espero receber 400 se o campo password estiver vazio', async () => {
     const userRepository = new InMemoryRepository()
     const useCase = new CreateUser(userRepository)
     const sut = new CreateUserRouter(useCase)
@@ -77,7 +59,7 @@ describe('Create User Controller', () => {
     expect(retornoApp.statusCode).toEqual(400)
   })
 
-  test('Should 400 if empty name', async () => {
+  test('Espero receber 400 se o campo name estiver vazio', async () => {
     const userRepository = new InMemoryRepository()
     const useCase = new CreateUser(userRepository)
     const sut = new CreateUserRouter(useCase)
@@ -104,7 +86,7 @@ describe('Create User Controller', () => {
     expect(retornoApp.statusCode).toEqual(400)
   })
 
-  test('Should 400 if passwords dont match', async () => {
+  test('Espero receber 400 se as senhas não corresponderem', async () => {
     const userRepository = new InMemoryRepository()
     const useCase = new CreateUser(userRepository)
     const sut = new CreateUserRouter(useCase)
@@ -119,5 +101,23 @@ describe('Create User Controller', () => {
     }
     let retornoApp = await sut.call(clientRequest)
     expect(retornoApp.statusCode).toEqual(400)
+  })
+
+  test('Espero receber 200 se criando o usuário corretamente', async () => {
+    const userRepository = new InMemoryRepository()
+    const useCase = new CreateUser(userRepository)
+    const sut = new CreateUserRouter(useCase)
+
+    const clientRequest = {
+      body: {
+        name: 'Gabriel',
+        email: 'dev@andreazza.dev',
+        password: '123456',
+        confirm_password: '123456',
+      },
+    }
+    const retornoApp = await sut.call(clientRequest)
+    expect(retornoApp.statusCode).toEqual(200)
+    expect(retornoApp.data.user).keys('id', 'email', 'name')
   })
 })

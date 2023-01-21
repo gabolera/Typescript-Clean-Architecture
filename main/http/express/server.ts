@@ -10,5 +10,5 @@ app.use(express.json())
 app.use(userRouters)
 
 app.listen(3000, () => {
-  console.log(`Clean Archteture Running at 3000`)
+  console.log(`Server Express is running at 3000`)
 })

@@ -22,9 +22,10 @@ export class CreateUserRouter implements CustomControllerInterface {
       }
 
       let user = new User({ name, email, password })
-      await this.useCaseCreateUser.handle(user)
+      let dadosUser = await this.useCaseCreateUser.handle(user)
       return HttpResponse.status(200).json({
         message: 'Usuário cadastrado com sucesso',
+        user: dadosUser,
       })
     } catch (err: any) {
       return HttpResponse.status(400).json({ message: err.message })

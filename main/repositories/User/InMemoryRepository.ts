@@ -6,7 +6,8 @@ export class InMemoryRepository implements UserRepositoryInterface {
 
   constructor() {}
 
-  async create(user: User) {
+  async create(user: User): Promise<User> {
     this.items.push(user)
+    return user
   }
 }
