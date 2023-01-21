@@ -1,7 +1,7 @@
 import crypto from 'crypto'
 export class User {
   private showPass: boolean = false
-  constructor(private props: UserDefaultProps) {
+  constructor(private props: UserProps) {
     props.id = props.id ?? crypto.randomUUID()
   }
 
@@ -17,15 +17,15 @@ export class User {
     return this.props.email
   }
 
-  public get password(): String {
-    return this.props.password
+  public get password(): String | null {
+    return this.props.password ?? null
   }
 
-  public get getPassword(): String {
+  public get getPassword(): String | null {
     return this.password
   }
 
-  getProps(): Omit<UserDefaultProps, 'password'> {
+  getProps(): Omit<UserProps, 'password'> {
     return {
       id: this.id,
       name: this.name,
@@ -34,9 +34,9 @@ export class User {
   }
 }
 
-interface UserDefaultProps {
+export type UserProps = {
   id?: String | null
   name: String
   email: String
-  password: String
+  password?: String | null
 }

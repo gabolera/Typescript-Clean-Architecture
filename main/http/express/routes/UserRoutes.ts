@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { CreateUser } from '../../../../domain/app/User/CreateUser'
 import { CreateUserRouter } from '../../../../domain/controllers/User/CreateUserRouter'
-import { InMemoryRepository } from '../../../repositories/User/InMemoryRepository'
+import { InMemoryRepository } from '../../../repositories/User/InMemoryUsersRepository'
 import { ExpressRouterAdapter } from '../adapters/ExpressRouterAdapter'
 
 const router = Router()

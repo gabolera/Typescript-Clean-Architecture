@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "vitest",
+    "test:stage": "vitest --watch=false --reporter=verbose",
+    "test": "vitest --reporter=verbose",
     "server:express": "tsnd ./main/http/express/server.ts",
     "server:koa": "tsnd ./main/http/koa/server.ts"
   },
