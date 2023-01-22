@@ -1,19 +1,31 @@
-import { User, UserProps } from '../../../domain/@entities/User'
-import { UserRepositoryInterface } from '../../../domain/@repositories/UserRepositoryInterface'
+import { User, UserProps } from '../../../domain/entities/User'
+import { UserRepositoryInterface } from '../../../domain/repositories/UserRepositoryInterface'
 
 export class InMemoryUsersRepository implements UserRepositoryInterface {
-  private items: UserProps[] = []
+  private items: UserProps[]
 
-  constructor() {}
+  private static INSTANCE: InMemoryUsersRepository
 
-  async create(user: User): Promise<User> {
-    this.items.push({
+  constructor() {
+    this.items = []
+  }
+
+  public static getInstance() {
+    if (!InMemoryUsersRepository.INSTANCE) {
+      InMemoryUsersRepository.INSTANCE = new InMemoryUsersRepository()
+    }
+    return InMemoryUsersRepository.INSTANCE
+  }
+
+  async create(user: User): Promise<UserProps> {
+    let userData: UserProps = {
       id: user.id,
       name: user.name,
       email: user.email,
       password: user.password,
-    })
-    return user
+    }
+    this.items.push(userData)
+    return userData
   }
 
   async getAllUsers(): Promise<UserProps[]> {
@@ -32,5 +44,20 @@ export class InMemoryUsersRepository implements UserRepositoryInterface {
       email: userFind.email,
     }
     return infos
+  }
+
+  async update(id: String, user: User): Promise<UserProps> {
+    let userData = {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      password: user.password,
+    }
+    this.items.map((x) => {
+      x.id === id
+      x = userData
+    })
+
+    return userData
   }
 }

@@ -5,8 +5,8 @@ export class User {
     props.id = props.id ?? crypto.randomUUID()
   }
 
-  public get id(): String | null {
-    return this.props.id ?? null
+  public get id(): String {
+    return this.props.id ?? ''
   }
 
   public get name(): String {
@@ -17,8 +17,8 @@ export class User {
     return this.props.email
   }
 
-  public get password(): String | null {
-    return this.props.password ?? null
+  public get password(): String {
+    return this.props.password ?? ''
   }
 
   public get getPassword(): String | null {
@@ -35,8 +35,8 @@ export class User {
 }
 
 export type UserProps = {
-  id?: String | null
+  id?: String
   name: String
   email: String
-  password?: String | null
+  password?: String
 }

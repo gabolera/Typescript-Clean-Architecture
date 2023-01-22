@@ -1,13 +1,12 @@
 import { describe, test, expect } from 'vitest'
-import { repositorieDynamicTest } from '../../config/repositorieDynamicTest'
-import { MissingParamsError } from '../../errors/MissingParamsError'
-import { User } from '../../@entities/User'
+import { userRepositorieDynamicTest } from '../../helpers/config/repositorieDynamicTest'
+import { MissingParamsError } from '../../helpers/errors/MissingParamsError'
+import { User } from '../../entities/User'
 import { CreateUser } from './CreateUser'
 
 describe('Create User Use Case', () => {
   test('Espero receber erro ao cadastrar um usuário que sem password', async () => {
-    const repo = new repositorieDynamicTest()
-    const sut = new CreateUser(repo)
+    const sut = new CreateUser(userRepositorieDynamicTest)
     const user = new User({
       email: 'test@andreazza.dev',
       name: 'Test User',
@@ -19,8 +18,7 @@ describe('Create User Use Case', () => {
   })
 
   test('Espero receber erro ao cadastrar um usuário que sem name', async () => {
-    const repo = new repositorieDynamicTest()
-    const sut = new CreateUser(repo)
+    const sut = new CreateUser(userRepositorieDynamicTest)
     const user = new User({
       email: 'test@andreazza.dev',
       name: '',
@@ -32,8 +30,7 @@ describe('Create User Use Case', () => {
   })
 
   test('Espero receber erro ao cadastrar um usuário que sem email', async () => {
-    const repo = new repositorieDynamicTest()
-    const sut = new CreateUser(repo)
+    const sut = new CreateUser(userRepositorieDynamicTest)
     const user = new User({
       email: '',
       name: 'Test User',

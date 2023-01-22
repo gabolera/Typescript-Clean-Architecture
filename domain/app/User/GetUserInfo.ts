@@ -1,5 +1,5 @@
-import { UserProps } from '../../@entities/User'
-import { UserRepositoryInterface } from '../../@repositories/UserRepositoryInterface'
+import { UserProps } from '../../entities/User'
+import { UserRepositoryInterface } from '../../repositories/UserRepositoryInterface'
 
 export class GetUserInfo {
   constructor(private userRepository: UserRepositoryInterface) {}

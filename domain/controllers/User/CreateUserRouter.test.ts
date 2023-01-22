@@ -1,12 +1,11 @@
 import { describe, test, expect } from 'vitest'
 import { CreateUser } from '../../app/User/CreateUser'
-import { repositorieDynamicTest } from '../../config/repositorieDynamicTest'
+import { userRepositorieDynamicTest } from '../../helpers/config/repositorieDynamicTest'
 import { CreateUserRouter } from './CreateUserRouter'
 
 describe('Create User Controller', () => {
   test('Espero receber 400 se o campo email estiver vazio', async () => {
-    const userRepository = new repositorieDynamicTest()
-    const useCase = new CreateUser(userRepository)
+    const useCase = new CreateUser(userRepositorieDynamicTest)
     const sut = new CreateUserRouter(useCase)
 
     let clientRequest: any = {
@@ -33,8 +32,7 @@ describe('Create User Controller', () => {
   })
 
   test('Espero receber 400 se o campo password estiver vazio', async () => {
-    const userRepository = new repositorieDynamicTest()
-    const useCase = new CreateUser(userRepository)
+    const useCase = new CreateUser(userRepositorieDynamicTest)
     const sut = new CreateUserRouter(useCase)
 
     let clientRequest: any = {
@@ -60,8 +58,7 @@ describe('Create User Controller', () => {
   })
 
   test('Espero receber 400 se o campo name estiver vazio', async () => {
-    const userRepository = new repositorieDynamicTest()
-    const useCase = new CreateUser(userRepository)
+    const useCase = new CreateUser(userRepositorieDynamicTest)
     const sut = new CreateUserRouter(useCase)
 
     let clientRequest: any = {
@@ -87,8 +84,7 @@ describe('Create User Controller', () => {
   })
 
   test('Espero receber 400 se as senhas não corresponderem', async () => {
-    const userRepository = new repositorieDynamicTest()
-    const useCase = new CreateUser(userRepository)
+    const useCase = new CreateUser(userRepositorieDynamicTest)
     const sut = new CreateUserRouter(useCase)
 
     let clientRequest: any = {
@@ -104,8 +100,7 @@ describe('Create User Controller', () => {
   })
 
   test('Espero receber 200 se criando o usuário corretamente', async () => {
-    const userRepository = new repositorieDynamicTest()
-    const useCase = new CreateUser(userRepository)
+    const useCase = new CreateUser(userRepositorieDynamicTest)
     const sut = new CreateUserRouter(useCase)
 
     const clientRequest = {

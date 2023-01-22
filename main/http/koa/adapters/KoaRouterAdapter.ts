@@ -1,5 +1,5 @@
 import { RequestInterface } from '../../../../utils/interfaces/RequestInterface'
-import { CustomControllerInterface } from '../../../../domain/controllers/CustomControllerInterface'
+import { CustomControllerInterface } from '../../../../domain/interfaces/CustomControllerInterface'
 
 export class KoaRouterAdapter {
   static adapt(router: CustomControllerInterface) {

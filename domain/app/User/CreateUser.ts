@@ -1,11 +1,11 @@
-import { MissingParamsError } from '../../errors/MissingParamsError'
-import { User } from '../../@entities/User'
-import { UserRepositoryInterface } from '../../@repositories/UserRepositoryInterface'
+import { MissingParamsError } from '../../helpers/errors/MissingParamsError'
+import { User, UserProps } from '../../entities/User'
+import { UserRepositoryInterface } from '../../repositories/UserRepositoryInterface'
 
 export class CreateUser {
   constructor(private userRepository: UserRepositoryInterface) {}
 
-  async handle(user: User): Promise<UserOutput> {
+  async handle(user: User): Promise<UserProps> {
     try {
       if (!user.password) {
         throw new MissingParamsError('Password')
@@ -19,18 +19,11 @@ export class CreateUser {
         throw new MissingParamsError('Name')
       }
 
-      let createdUser: any = await this.userRepository.create(user)
-      let userInfos = createdUser.getProps()
-      delete userInfos.password
-      return userInfos
+      let createdUser = await this.userRepository.create(user)
+      delete createdUser.password
+      return createdUser
     } catch (err: any) {
       throw err
     }
   }
-}
-
-type UserOutput = {
-  id: String | undefined
-  name: String
-  email: String
 }
