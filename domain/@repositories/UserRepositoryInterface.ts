@@ -1,4 +1,4 @@
-import { User, UserProps } from './User'
+import { User, UserProps } from '../@entities/User'
 
 export interface UserRepositoryInterface {
   create(user: User): Promise<User>

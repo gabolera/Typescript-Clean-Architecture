@@ -1,5 +1,5 @@
-import { User, UserProps } from '../../../domain/app/User/core/User'
-import { UserRepositoryInterface } from '../../../domain/app/User/core/UserRepositoryInterface'
+import { User, UserProps } from '../../../domain/@entities/User'
+import { UserRepositoryInterface } from '../../../domain/@repositories/UserRepositoryInterface'
 
 export class InMemoryUsersRepository implements UserRepositoryInterface {
   private items: UserProps[] = []

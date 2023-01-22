@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest'
 import { repositorieDynamicTest } from '../../config/repositorieDynamicTest'
-import { User } from './core/User'
+import { User } from '../../@entities/User'
 import { CreateUser } from './CreateUser'
 import { GetUserInfo } from './GetUserInfo'
 

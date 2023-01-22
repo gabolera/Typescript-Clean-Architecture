@@ -1,7 +1,7 @@
 import Router from '@koa/router'
 import { CreateUser } from '../../../../domain/app/User/CreateUser'
 import { CreateUserRouter } from '../../../../domain/controllers/User/CreateUserRouter'
-import { InMemoryRepository } from '../../../repositories/User/InMemoryUsersRepository'
+import { InMemoryUsersRepository } from '../../../repositories/User/InMemoryUsersRepository'
 import { KoaRouterAdapter } from '../adapters/KoaRouterAdapter'
 
 const router = new Router()
@@ -15,7 +15,7 @@ const router = new Router()
 router.post(
   '/register',
   KoaRouterAdapter.adapt(
-    new CreateUserRouter(new CreateUser(new InMemoryRepository()))
+    new CreateUserRouter(new CreateUser(new InMemoryUsersRepository()))
   )
 )
 

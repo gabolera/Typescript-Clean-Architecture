@@ -1,7 +1,7 @@
 import { describe, test, expect } from 'vitest'
 import { repositorieDynamicTest } from '../../config/repositorieDynamicTest'
 import { MissingParamsError } from '../../errors/MissingParamsError'
-import { User } from './core/User'
+import { User } from '../../@entities/User'
 import { CreateUser } from './CreateUser'
 
 describe('Create User Use Case', () => {

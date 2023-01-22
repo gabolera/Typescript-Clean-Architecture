@@ -1,6 +1,6 @@
 import { MissingParamsError } from '../../errors/MissingParamsError'
-import { User } from './core/User'
-import { UserRepositoryInterface } from './core/UserRepositoryInterface'
+import { User } from '../../@entities/User'
+import { UserRepositoryInterface } from '../../@repositories/UserRepositoryInterface'
 
 export class CreateUser {
   constructor(private userRepository: UserRepositoryInterface) {}

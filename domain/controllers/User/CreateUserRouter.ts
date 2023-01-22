@@ -1,8 +1,8 @@
-import { CreateUser } from '../../app/User/CreateUser'
-import { RequestInterface } from '../../../utils/interfaces/RequestInterface'
 import HttpResponse from '../../helpers/HttpResponse'
 import { CustomControllerInterface } from '../CustomControllerInterface'
-import { User } from '../../app/User/core/User'
+import { RequestInterface } from '../../../utils/interfaces/RequestInterface'
+import { CreateUser } from '../../app/User/CreateUser'
+import { User } from '../../@entities/User'
 
 export class CreateUserRouter implements CustomControllerInterface {
   constructor(private useCaseCreateUser: CreateUser) {}
